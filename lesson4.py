@@ -6,10 +6,10 @@ class Person:
     def __setattr__(self, key, value):
         if key == 'name':
             if not isinstance(value, str) or len(value) == 0:
-                raise ValueError("Имя не может быть пустым.")
+                raise ValueError("Name cannot be empty!")
         elif key == 'age':
             if not isinstance(value, (int, float)) or value <= 0:
-                raise ValueError("Возраст должен быть положительным числом.")
+                raise ValueError("Age must be a positive number!")
         super().__setattr__(key, value)
 
 person = Person("John", 25)
