@@ -8,7 +8,7 @@ class Person:
             if not isinstance(value, str) or len(value) == 0:
                 raise ValueError("Name cannot be empty!")
         elif key == 'age':
-            if not isinstance(value, (int, float)) or value <= 0:
+            if not isinstance(value, (int)) or value <= 0:
                 raise ValueError("Age must be a positive number!")
         super().__setattr__(key, value)
 
