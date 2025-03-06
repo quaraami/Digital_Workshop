@@ -26,4 +26,39 @@ p2.name = ""
 p2.surname = 1324             
 p2.age = -5
 
-print("Задание №2")
+print("Задание №3")
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def __getattr__(self, attr_name):
+        if attr_name in ["make", "model"]:
+            raise AttributeError(f"'Car' object has no attribute '{attr_name}'")
+        return "This attribute is not available"
+
+c = Car("Toyota", "Corolla")
+print(c.make)     
+print(c.color) 
+
+print("Задание №4")
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def __setattr__(self, name, value):
+        if name == 'width' or name == 'height':
+            super().__setattr__(name, value)
+        elif hasattr(self, name): 
+            super().__setattr__(name, value)
+        else:
+            raise AttributeError("Local attributes are not allowed")
+
+r = Rectangle(10, 20)
+r.width = 15 
+r.height = 25  
+try:
+    r.color = 'red'
+except AttributeError as e:
+    print(e)
