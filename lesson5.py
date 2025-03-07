@@ -1,3 +1,4 @@
+import math
 print("Задание №1")
 class Fraction:
     def __init__(self, numerator:int, denominator: int):
@@ -7,6 +8,15 @@ class Fraction:
             raise ZeroDivisionError("Знаменатель не может быть равен нулю!")
         self._numerator = numerator
         self._denominator = denominator
+    
+    def reduce(self):
+      gcd = math.gcd(self.numerator, self.denominator)
+      self.numerator //= gcd
+      self.denominator //= gcd
+      if self.denominator < 0:
+          self.numerator *= -1
+          self.denominator *= -1
+      return Fraction(self.numerator, self.denominator)
     
     #Вычисление точного значения дроби с округлением до 3-го знака.
     @property 
