@@ -18,7 +18,7 @@ class Fraction:
           self.denominator *= -1
       return Fraction(self.numerator, self.denominator)
     
-    #Вычисление точного значения дроби с округлением до 3-го знака.
+    #Вычисление значения дроби с округлением
     @property 
     def value(self):
         return round(self._numerator / self._denominator, 3)
@@ -60,10 +60,6 @@ print(f1.value) # 0.5
 
 
 
-
-
-
-
-#Красивый вывод дроби (a/b).
 #Все возможные проверки (целые числа в числителе и знаменателе, отрицательные значения и т. д.).
 #Использование staticmethod, classmethod, __new__, property.
+#3 4 5 6
