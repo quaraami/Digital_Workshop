@@ -1,6 +1,5 @@
 #Задание №4
 import math
-
 class Vector:
     def __init__(self, *args):
         for coord in args:
