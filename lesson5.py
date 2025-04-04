@@ -44,11 +44,18 @@ class Fraction:
         new_denominator = self._denominator * other._numerator
         return Fraction(new_numerator, new_denominator)
     #Сравнение(Равенство)
-    def __eq__(self, other: 'Fraction') -> bool:
+    def __eq__(self, other: 'Fraction'):
         if not isinstance(other, Fraction):
             return False
         return self._numerator == other._numerator and self._denominator == other._denominator
-    #Сравнение(строгое)
+    #Сравнение(Меньше)
+    def __lt__(self, other):
+        if not isinstance(other, Fraction):
+            return NotImplemented
+        return self._numerator * other._denominator < other._numerator * self._denominator
+    #Хэширование
+    def __hash__(self):
+        return hash((self._numerator, self._denominator))
 
 f1 = Fraction(1, 2)
 f2 = Fraction(3, 4)
@@ -57,3 +64,4 @@ print(f1 - f2)  # -1/4
 print(f1 * f2)  # 3/8
 print(f1 / f2)  # 2/3
 print(f1.value) # 0.5
+print(hash(f2))
